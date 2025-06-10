@@ -45,7 +45,7 @@ Default is:
 | --------------- | ---------------------------------------- |
 | `manifest.json` | Chrome extension config                  |
 | `background.js` | Injects/removes outline styles on toggle |
-| `icon128.png`   | Extension icon shown in Chrome toolbar   |
+| `icon67.png`    | Extension icon shown in Chrome toolbar   |
 | `LICENSE`       | Custom restrictive license               |
 | `README.md`     | You're reading it                        |
 
