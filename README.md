@@ -7,7 +7,9 @@ A minimal Chrome extension to help visualize links and buttons by toggling outli
 ## 🚀 Features
 
 - 🟥 Adds **red outline** to all `<a>` (link) elements
-- 🔵 Adds **blue outline** to all `<button>` elements
+- 🔵 Adds **blue outline** to all `<button>` and `[role="button"]` elements
+- 🟠 Adds **orange outline** to `<input>` (excluding hidden), `<select>`, and `<textarea>`
+- 🟢 Adds **green outline** to focusable elements via `[tabindex]` (excluding `-1`)
 - 🖱️ Activated via **toolbar icon**
 - ⌨️ Or with shortcut: `Cmd+Shift+O` (Mac) / `Ctrl+Shift+O` (Windows/Linux)
 - 🔁 Toggle on/off with visual badge indicator ("ON")
