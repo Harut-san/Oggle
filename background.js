@@ -2,25 +2,37 @@ let enabledTabs = {};
 
 async function toggleOutline(tab) {
   const tabId = tab.id;
-  const css = `
-    a {
-      outline: 3px solid red !important;
-    }
-    button {
-      outline: 3px solid blue !important;
-    }
-  `;
 
-  const isEnabled = enabledTabs[tabId];
+  await chrome.scripting.executeScript({
+    target: { tabId },
+    func: () => {
+      const styleId = "__outline_toggle_style__";
+      const existing = document.getElementById(styleId);
 
-  if (isEnabled) {
-    await chrome.scripting.removeCSS({ target: { tabId }, css });
-    enabledTabs[tabId] = false;
-    chrome.action.setBadgeText({ tabId, text: "" });
-  } else {
-    await chrome.scripting.insertCSS({ target: { tabId }, css });
-    enabledTabs[tabId] = true;
-    chrome.action.setBadgeText({ tabId, text: "ON" });
+      if (existing) {
+        existing.remove();
+      } else {
+        const style = document.createElement("style");
+        style.id = styleId;
+        style.textContent = `
+          a {
+            outline: 3px solid red !important;
+          }
+          button {
+            outline: 3px solid blue !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    },
+  });
+
+  // Badge update
+  const isNowActive = !enabledTabs[tabId];
+  enabledTabs[tabId] = isNowActive;
+
+  chrome.action.setBadgeText({ tabId, text: isNowActive ? "ON" : "" });
+  if (isNowActive) {
     chrome.action.setBadgeBackgroundColor({ tabId, color: "#00cc00" });
   }
 }
