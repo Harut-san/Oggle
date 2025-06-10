@@ -10,10 +10,9 @@
   "action": {
     "default_title": "Toggle outlines",
     "default_icon": {
-     "16": "icon128.png",
-     "32": "icon128.png",
-     "48": "icon128.png",
-     "128": "icon128.png"
+     "16": "icon67.png",
+     "32": "icon67.png",
+     "48": "icon67.png"
   }
     
   },
