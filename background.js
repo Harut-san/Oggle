@@ -21,20 +21,21 @@ async function toggleOutline(tab) {
             const style = document.createElement("style");
             style.id = styleId;
             style.textContent = `
-  a {
-    outline: 3px solid red !important;
-  }
-  button, [role="button"] {
-    outline: 3px solid blue !important;
-  }
-  input:not([type="hidden"]),
-  select,
-  textarea {
-    outline: 3px solid orange !important;
-  }
-  [tabindex]:not([tabindex="-1"]) {
-    outline: 3px solid green !important;
-  }
+button {
+  outline: 3px solid blue !important;
+}
+
+a {
+  outline: 3px solid red !important;
+}
+
+input, textarea {
+  outline: 3px solid orange !important;
+}
+
+:where([tabindex]:not([tabindex='-1'])) {
+  outline: 3px solid green !important;
+}
 `;
             head.appendChild(style);
           }
